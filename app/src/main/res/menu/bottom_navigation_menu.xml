@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/movieListFragment"
+        android:id="@+id/applicationsListFragment"
         android:title="Приложения"
+        android:icon="@drawable/ic_apps"
         android:menuCategory="secondary"/>
 
     <item
-        android:id="@+id/userInfoFragment"
+        android:id="@+id/userDetailFragment"
         android:title="Аккаунт"
+        android:icon="@drawable/ic_profile"
         android:menuCategory="secondary"
         />
 </menu>

@@ -50,5 +50,11 @@ dependencies {
     //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    //images from url
+    implementation "io.coil-kt:coil-base:1.3.0"
+    implementation "io.coil-kt:coil:1.3.0"
+    //recyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
 
 }
