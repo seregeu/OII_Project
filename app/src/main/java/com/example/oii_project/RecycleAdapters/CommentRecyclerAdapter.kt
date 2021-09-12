@@ -1,50 +1,57 @@
 package com.example.summer_school_hw.model.data.RecycleAdapters
 
+import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.view.animation.AnimationUtils
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.oii_project.R
 import com.example.summer_school_hw.model.data.dto.CommentDto
 import kotlin.properties.Delegates
 
-class CommentRecyclerAdapter() :
-    RecyclerView.Adapter<CommentRecyclerAdapter.MyViewHolder>() {
+class CommentRecyclerAdapter(): RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()  {
 
-    var comments: List<CommentDto> by Delegates.observable(emptyList()) { _, oldList, newList ->
-        autoNotifyComments(oldList, newList) { o, n -> o.username == n.username }
+    var commentList: List<CommentDto> by Delegates.observable(emptyList()) { _, oldList, newList ->
+        autoNotify(oldList, newList) { o, n -> o.commentText == n.commentText }
     }
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var _ImageView: ImageView? = null
-        var _TextViewUsername: TextView? = null
-        var _TextViewComment: TextView? = null
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.comment_lits_item, parent, false)
+        return CommentViewHolder(view)
+    }
+
+    override fun getItemCount(): Int {
+        return commentList.size
+    }
+
+    inner class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        var authorName: TextView? = null
+
         init {
-            _ImageView = itemView.findViewById(R.id.comment_author_avatar)
-            _TextViewUsername = itemView.findViewById(R.id.comment_author_name)
-            _TextViewComment = itemView.findViewById(R.id.comment_text)
+            authorName = itemView.findViewById(R.id.comment_author_name)
         }
+
+    }
+    interface OnAppListener{
+        fun onAppClick(position: Int)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.comment_lits_item, parent, false)
-        return MyViewHolder(itemView)
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val comment = comments[position]
-        holder._ImageView?.load(comment.avatarUrl)
-        holder._TextViewComment?.text = comment.commentText
-        holder._TextViewUsername?.text = comment.username
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 
-    override fun getItemCount() = comments.size
-    fun <T> RecyclerView.Adapter<*>.autoNotifyComments(oldList: List<CommentDto>, newList: List<T>, compare: (T, T) -> Boolean) {
+    fun <T> RecyclerView.Adapter<*>.autoNotify(oldList: List<CommentDto>, newList: List<T>, compare: (T, T) -> Boolean) {
 
         val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
             override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
@@ -59,5 +66,11 @@ class CommentRecyclerAdapter() :
             override fun getNewListSize() = newList.size
         })
         diff.dispatchUpdatesTo(this)
+    }
+
+    override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
+        val app = commentList[position]
+        holder.authorName?.text = app.commentText
+        Log.i("Bind: ", "bind, position = " + position);
     }
 }

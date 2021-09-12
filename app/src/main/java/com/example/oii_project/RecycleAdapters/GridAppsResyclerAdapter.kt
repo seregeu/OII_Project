@@ -15,21 +15,19 @@ import com.example.summer_school_hw.model.data.dto.AppDto
 import com.google.android.material.imageview.ShapeableImageView
 import kotlin.properties.Delegates
 
-class GridAppsResyclerAdapter(private val listener: OnAppListener): RecyclerView.Adapter<GridAppsResyclerAdapter.ViewHolder>()  {
+class GridAppsResyclerAdapter(private val listener: OnAppListener): RecyclerView.Adapter<GridAppsResyclerAdapter.MyViewHolder>()  {
 
     var appsList: List<AppDto> by Delegates.observable(emptyList()) { _, oldList, newList ->
         autoNotify(oldList, newList) { o, n -> o.title == n.title }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // inflate the custom view from xml layout file
-        val view: View = LayoutInflater.from(parent.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.application_list_item, parent, false)
-        // return the view holder
-        return ViewHolder(view)
+        return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int)  {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int)  {
         val app = appsList[position]
         holder.appName?.text = app.title
         holder.appCover?.load(app.imageUrl)
@@ -43,7 +41,7 @@ class GridAppsResyclerAdapter(private val listener: OnAppListener): RecyclerView
         return appsList.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener{
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener{
         var appCover: ShapeableImageView? = null
         var appName: TextView? = null
         var appRating: RatingBar?=null

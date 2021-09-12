@@ -1,8 +1,6 @@
 package com.example.summer_school_hw.model.data.features.movies
 
-import com.example.oii_project.data.features.apps.AppsDataSource
 import com.example.oii_project.data.features.comments.CommentDataSource
-import com.example.summer_school_hw.model.data.dto.AppDto
 import com.example.summer_school_hw.model.data.dto.CommentDto
 
 class CommentDataSourceImpl : CommentDataSource {
