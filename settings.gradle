@@ -1,0 +1,2 @@
+rootProject.name = "OII_Project"
+include ':app'
