@@ -1,7 +1,7 @@
 package com.example.summer_school_hw.model.data.features.movies
 
+import com.example.oii_project.data.dto.CommentDto
 import com.example.oii_project.data.features.comments.CommentDataSource
-import com.example.summer_school_hw.model.data.dto.CommentDto
 
 class CommentDataSourceImpl : CommentDataSource {
 	override fun getComments() = listOf(

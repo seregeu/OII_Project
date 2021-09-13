@@ -1,4 +1,4 @@
-package com.example.summer_school_hw.model.data.dto
+package com.example.oii_project.data.dto
 
 data class CommentDto(
     val username: String,

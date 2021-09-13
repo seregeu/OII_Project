@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import coil.load
 import com.example.oii_project.R
-import com.example.summer_school_hw.model.data.dto.AppDto
+import com.example.oii_project.model.data.dto.AppDto
 import com.google.android.material.imageview.ShapeableImageView
 import kotlin.properties.Delegates
 

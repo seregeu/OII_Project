@@ -12,9 +12,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oii_project.R
+import com.example.oii_project.model.data.dto.AppDto
+import com.example.oii_project.model.data.features.movies.AppsDataSourceImpl
 import com.example.summer_school_hw.model.data.RecycleAdapters.GridAppsResyclerAdapter
-import com.example.summer_school_hw.model.data.dto.AppDto
-import com.example.summer_school_hw.model.data.features.movies.AppsDataSourceImpl
 import com.example.summer_school_hw.model.data.presentation.AppsModel
 
 

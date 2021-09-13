@@ -1,5 +1,6 @@
 package com.example.summer_school_hw.model.data.RecycleAdapters
 
+import android.media.Image
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,7 +13,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import coil.load
 import com.example.oii_project.R
-import com.example.summer_school_hw.model.data.dto.CommentDto
+import com.example.oii_project.data.dto.CommentDto
 import kotlin.properties.Delegates
 
 class CommentRecyclerAdapter(): RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()  {
@@ -37,6 +38,7 @@ class CommentRecyclerAdapter(): RecyclerView.Adapter<CommentRecyclerAdapter.Comm
         var commentText: TextView?=null
         init {
             authorName = itemView.findViewById(R.id.comment_author_name)
+            authorAvatar = itemView.findViewById(R.id.comment_author_avatar)
         }
 
     }
