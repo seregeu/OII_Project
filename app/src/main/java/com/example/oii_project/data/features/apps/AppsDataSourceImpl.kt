@@ -1,4 +1,4 @@
-package com.example.oii_project.model.data.features.movies
+package com.example.oii_project.data.features.apps
 
 import com.example.oii_project.data.features.apps.AppsDataSource
 import com.example.oii_project.model.data.dto.AppDto

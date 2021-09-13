@@ -12,8 +12,10 @@
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
         android:id="@+id/list_app_cover"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="150dp"
+        android:minHeight="150dp"
         app:shapeAppearanceOverlay="@style/roundedImageViewApplication"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
