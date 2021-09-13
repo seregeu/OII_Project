@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -32,14 +33,12 @@ class CommentRecyclerAdapter(): RecyclerView.Adapter<CommentRecyclerAdapter.Comm
 
     inner class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var authorName: TextView? = null
-
+        var authorAvatar: ImageView?=null
+        var commentText: TextView?=null
         init {
             authorName = itemView.findViewById(R.id.comment_author_name)
         }
 
-    }
-    interface OnAppListener{
-        fun onAppClick(position: Int)
     }
 
     override fun getItemId(position: Int): Long {
