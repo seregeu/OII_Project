@@ -66,7 +66,6 @@ class ApplicationsListFragment : Fragment(),GridAppsResyclerAdapter.OnAppListene
         recyclerViewApps.adapter = appRecyclerAdapter
     }
 
-
     fun updateResyclerMovies(list: List<AppDto>){
         appRecyclerAdapter.appsList = list
         recyclerViewApps.scrollToPosition(0)

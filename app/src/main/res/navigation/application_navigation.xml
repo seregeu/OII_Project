@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/application_navigation"
-    app:startDestination="@id/applicationsListFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/applicationsListFragment"
         android:name="com.example.oii_project.fragments.ApplicationsListFragment"
@@ -27,4 +27,13 @@
         android:name="com.example.oii_project.fragments.UserDetailFragment"
         android:label="fragment_user_detail"
         tools:layout="@layout/fragment_user_detail" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.oii_project.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_applicationsListFragment"
+            app:destination="@id/applicationsListFragment" />
+    </fragment>
 </navigation>
