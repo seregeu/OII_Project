@@ -4,59 +4,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.LoginFragment">
+        <ImageView
+            android:id="@+id/login_avatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="110dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_profile" />
 
+        <EditText
+            android:id="@+id/login_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_avatar"
+            android:layout_marginTop="20dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:layout_centerHorizontal="true"
+            android:hint="Логин"
+            />
 
-    <ImageView
-        android:id="@+id/login_avatar"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="110dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_profile" />
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_username"
+            android:layout_marginTop="20dp"
+            android:ems="15"
+            android:inputType="textPassword"
+            android:layout_centerHorizontal="true"
+            android:hint="Пароль"
+            />
 
-    <EditText
-        android:id="@+id/login_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_avatar"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_centerHorizontal="true"
-        />
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_password"
+            android:layout_marginTop="20dp"
+            android:text="Войти"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"/>
 
-    <EditText
-        android:id="@+id/login_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_username"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:layout_centerHorizontal="true"
-        />
+        <Switch
+            android:id="@+id/is_bot_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="Ama bot"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_password"
-        android:layout_marginTop="30dp"
-        android:text="Зайти"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"/>
-
-    <Switch
-        android:id="@+id/is_bot_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="Ama bot"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-
+        <TextView
+            android:id="@+id/label_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/is_bot_switch"
+            android:layout_marginTop="150dp"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:text="Зарегистрировать аккаунт"
+            android:textColor="@color/green"/>
 </RelativeLayout>

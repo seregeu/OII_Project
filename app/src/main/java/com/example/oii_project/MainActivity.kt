@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
        val bottomNav: BottomNavigationView? = findViewById(R.id.nav_view)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.loginFragment) {
+            if(destination.id == R.id.loginFragment || destination.id == R.id.registrationFragment) {
                 bottomNav?.visibility = View.GONE
             } else {
                 bottomNav?.visibility = View.VISIBLE

@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.view.isGone
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.oii_project.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class LoginFragment : Fragment() {
+
+class RegistrationFragment : Fragment() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,12 +20,12 @@ class LoginFragment : Fragment() {
         arguments?.let {
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_registration, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,16 +33,14 @@ class LoginFragment : Fragment() {
         setListeners(view)
     }
 
-    private fun setListeners(view:View){
+    fun setListeners(view: View){
         navController = view.findNavController()
 
-        val loginButton: Button = view.findViewById(R.id.login_button)
+        val loginButton: Button = view.findViewById(R.id.registration_button)
         loginButton.setOnClickListener{
-            navController.navigate(R.id.action_loginFragment_to_applicationsListFragment)
+            navController.navigate(R.id.action_registrationFragment_to_loginFragment)
         }
-        val registerLabel:TextView = view.findViewById(R.id.label_register)
-        registerLabel.setOnClickListener{
-            navController.navigate(R.id.action_loginFragment_to_registrationFragment)
-        }
+
     }
+
 }
