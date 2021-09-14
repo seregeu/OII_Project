@@ -79,11 +79,11 @@
                 android:id="@+id/register_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/register_second_name"
+                android:layout_below="@+id/register_email"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:ems="15"
-                android:hint="E-mail"
+                android:hint="Password"
                 android:inputType="textPassword" />
 
             <EditText
