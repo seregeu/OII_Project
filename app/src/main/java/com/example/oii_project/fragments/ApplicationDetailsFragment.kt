@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oii_project.R
+import com.example.oii_project.adapters.AppAdapter
+import com.example.oii_project.adapters.CommentRecyclerAdapter
 import com.example.oii_project.data.presentation.CommentModel
-import com.example.summer_school_hw.model.data.RecycleAdapters.CommentRecyclerAdapter
 import com.example.summer_school_hw.model.data.features.movies.CommentDataSourceImpl
 
 class ApplicationDetailsFragment : Fragment() {
 
     lateinit var recyclerViewComments: RecyclerView
-    private val commentsRecyclerAdapter: CommentRecyclerAdapter = CommentRecyclerAdapter()
+    private lateinit var commentsRecyclerAdapter: CommentRecyclerAdapter
     val commentsModel = CommentModel(CommentDataSourceImpl())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +35,8 @@ class ApplicationDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerViewComments = view.findViewById(R.id.rv_comments)
+        commentsRecyclerAdapter = CommentRecyclerAdapter()
+        commentsRecyclerAdapter.submitList(commentsModel.getComments())
         recyclerViewComments.adapter = commentsRecyclerAdapter
-        commentsRecyclerAdapter.commentList=commentsModel.getComments()
     }
 }

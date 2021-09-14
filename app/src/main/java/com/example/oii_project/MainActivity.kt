@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         navController = Navigation.findNavController(this, R.id.fragment_container)
 
-        val bottomNav: BottomNavigationView? = findViewById(R.id.nav_view)
+       val bottomNav: BottomNavigationView? = findViewById(R.id.nav_view)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.loginFragment) {
                 bottomNav?.visibility = View.GONE

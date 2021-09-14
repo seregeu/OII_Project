@@ -1,77 +1,47 @@
-package com.example.summer_school_hw.model.data.RecycleAdapters
+package com.example.oii_project.adapters
 
-import android.media.Image
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import coil.load
 import com.example.oii_project.R
+import com.example.oii_project.callbacks.CommentRecyclerCallback
 import com.example.oii_project.data.dto.CommentDto
-import kotlin.properties.Delegates
+import com.example.oii_project.interfaces.AppItemCallback
+import com.google.android.material.imageview.ShapeableImageView
 
-class CommentRecyclerAdapter(): RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()  {
+class CommentRecyclerAdapter: ListAdapter<CommentDto, RecyclerView.ViewHolder>(CommentRecyclerCallback()) {
 
-    var commentList: List<CommentDto> by Delegates.observable(emptyList()) { _, oldList, newList ->
-        autoNotify(oldList, newList) { o, n -> o.commentText == n.commentText }
+    private lateinit var listener: AppItemCallback
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.application_list_item, parent, false)
+        return AppViewHolder(view)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.comment_lits_item, parent, false)
-        return CommentViewHolder(view)
+    fun initListener(listener: AppItemCallback){
+        this.listener = listener
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is AppViewHolder)
+            holder.bind(getItem(position))
     }
 
     override fun getItemCount(): Int {
-        return commentList.size
+        return currentList.size
     }
 
-    inner class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var authorName: TextView? = null
-        var authorAvatar: ImageView?=null
-        var commentText: TextView?=null
-        init {
-            authorName = itemView.findViewById(R.id.comment_author_name)
-            authorAvatar = itemView.findViewById(R.id.comment_author_avatar)
+    class AppViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        private var appCover: ShapeableImageView? = itemView.findViewById(R.id.list_app_cover)
+        fun bind(commentDto: CommentDto){
+            appCover?.load(commentDto.avatarUrl)
         }
-
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-
-    override fun getItemViewType(position: Int): Int {
-        return position
-    }
-
-    fun <T> RecyclerView.Adapter<*>.autoNotify(oldList: List<CommentDto>, newList: List<T>, compare: (T, T) -> Boolean) {
-
-        val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
-            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return oldList[oldItemPosition] == newList[newItemPosition]
-            }
-
-            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return oldList[oldItemPosition] == newList[newItemPosition]
-            }
-
-            override fun getOldListSize() = oldList.size
-            override fun getNewListSize() = newList.size
-        })
-        diff.dispatchUpdatesTo(this)
-    }
-
-    override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-        val app = commentList[position]
-        holder.authorName?.text = app.commentText
-        Log.i("Bind: ", "bind, position = " + position);
     }
 }

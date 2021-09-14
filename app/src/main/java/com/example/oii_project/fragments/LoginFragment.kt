@@ -32,6 +32,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val loginButton: Button = view.findViewById(R.id.login_button)
         navController = view.findNavController()
+
         loginButton.setOnClickListener{
             navController.navigate(R.id.action_loginFragment_to_applicationsListFragment)
         }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/fragment_container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/nav_view"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/application_navigation"/>
+        <Constraint android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_navigation_menu"
+            android:visibility="gone"/>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@+id/fragment_container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/nav_view"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/application_navigation"/>
+
+        <Constraint android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_navigation_menu"
+            android:visibility="visible"/>
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start"
+        motion:duration="250"
+        motion:motionInterpolator="linear">
+        <OnClick
+            app:targetId="@+id/login_button"/>
+    </Transition>
+</MotionScene>

@@ -43,7 +43,6 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
         initRecyclerMovies(view)
-
     }
 
     private fun initRecyclerMovies(view: View) {
@@ -65,5 +64,6 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
     //Пиши тут Сергей, что надо делать при нажатии
     override fun onAppClick(title: String) {
         Log.d("Item Pressed", title)
+        navController.navigate(R.id.action_applicationsListFragment_to_applicationDetailsFragment)
     }
 }
