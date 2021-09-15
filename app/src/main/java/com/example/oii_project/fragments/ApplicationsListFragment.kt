@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,10 +16,13 @@ import com.example.oii_project.R
 import com.example.oii_project.data.features.apps.AppsDataSourceImpl
 import com.example.oii_project.adapters.AppAdapter
 import com.example.oii_project.interfaces.AppItemCallback
+import com.example.oii_project.model.data.dto.AppDto
+import com.example.oii_project.viewModel.MainViewModel
 import com.example.summer_school_hw.model.data.presentation.AppsModel
 
 
 class ApplicationsListFragment : Fragment(), AppItemCallback {
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     private lateinit var appRecycler: RecyclerView
     private lateinit var  appAdapter: AppAdapter
@@ -43,6 +48,17 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
         initRecyclerMovies(view)
+        initObservers()
+        //Тута получаю приложения
+        mainViewModel.getApps()
+    }
+
+    private fun initObservers(){
+        mainViewModel.appsList.observe(viewLifecycleOwner, Observer(::updateAppsList))
+    }
+
+    private fun updateAppsList(appsList: List<AppDto>){
+        appAdapter.submitList(appsList)
     }
 
     private fun initRecyclerMovies(view: View) {
@@ -58,7 +74,6 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
         ).apply {
             appRecycler.layoutManager = this
         }
-        appAdapter.submitList(appsModel.getApps())
     }
 
     //Пиши тут Сергей, что надо делать при нажатии

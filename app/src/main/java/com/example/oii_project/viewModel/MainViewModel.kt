@@ -24,4 +24,14 @@ class MainViewModel () : ViewModel(){
     val commentsList: LiveData<List<CommentDto>> get() = _commentsList
     private val _commentsList = MutableLiveData<List<CommentDto>>()
 
+    fun getApps(){
+        //Я не совсем знаю, как правильно реализовывать апросы к серверу через RX, поэтому пока так оставлю
+        _appsList.postValue(appsModel.getApps())
+    }
+
+    fun getComments(){
+        //Я не совсем знаю, как правильно реализовывать апросы к серверу через RX, поэтому пока так оставлю
+        _commentsList.postValue(commentsModel.getComments())
+    }
+
 }

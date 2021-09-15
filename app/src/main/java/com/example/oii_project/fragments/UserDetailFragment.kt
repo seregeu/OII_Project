@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.oii_project.R
+import com.example.oii_project.viewModel.MainViewModel
 
 class UserDetailFragment : Fragment() {
+    private val mainViewModel: MainViewModel by activityViewModels()
+
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
