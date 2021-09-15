@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oii_project.R
@@ -17,6 +18,7 @@ import com.example.oii_project.data.presentation.CommentModel
 import com.example.oii_project.model.data.dto.AppDto
 import com.example.oii_project.viewModel.MainViewModel
 import com.example.summer_school_hw.model.data.features.movies.CommentDataSourceImpl
+import kotlinx.coroutines.supervisorScope
 
 class ApplicationDetailsFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
@@ -47,8 +49,8 @@ class ApplicationDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerViewComments = view.findViewById(R.id.rv_comments)
         commentsRecyclerAdapter = CommentRecyclerAdapter()
+        recyclerViewComments = view.findViewById(R.id.rv_comments)
         recyclerViewComments.adapter = commentsRecyclerAdapter
         initObservers()
     }
