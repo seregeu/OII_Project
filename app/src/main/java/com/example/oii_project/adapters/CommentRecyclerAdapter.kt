@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import coil.load
 import com.example.oii_project.R
@@ -32,8 +33,12 @@ class CommentRecyclerAdapter: ListAdapter<CommentDto, RecyclerView.ViewHolder>(C
 
     class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private var commentAvatar: ImageView? = itemView.findViewById(R.id.comment_author_avatar)
+        private var commentAuthorName: TextView? = itemView.findViewById(R.id.comment_author_name)
+        private var commentText: TextView? = itemView.findViewById(R.id.comment_text)
         fun bind(commentDto: CommentDto){
             commentAvatar?.load(commentDto.avatarUrl)
+            commentAuthorName?.text = commentDto.username
+            commentText?.text = commentDto.commentText
         }
     }
 }

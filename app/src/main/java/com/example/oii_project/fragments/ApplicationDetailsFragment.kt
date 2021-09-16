@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +27,7 @@ import kotlinx.coroutines.supervisorScope
 
 class ApplicationDetailsFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
+    private lateinit var navController: NavController
 
     lateinit var recyclerViewComments: RecyclerView
     private lateinit var commentsRecyclerAdapter: CommentRecyclerAdapter
@@ -41,6 +45,16 @@ class ApplicationDetailsFragment : Fragment() {
     }
     private fun updateCommentsList(commentsList: List<CommentDto>){
         commentsRecyclerAdapter.submitList(commentsList)
+    }
+
+    private fun setListeners(view:View){
+        navController = view.findNavController()
+
+        val labelAddReview: TextView = view.findViewById(R.id.label_add_review)
+        labelAddReview.setOnClickListener{
+            navController.navigate(R.id.action_applicationDetailsFragment_to_addCommentFragment)
+        }
+
     }
 
     override fun onCreateView(
@@ -63,5 +77,7 @@ class ApplicationDetailsFragment : Fragment() {
             recyclerViewComments.layoutManager = this
         }
         initObservers()
+        mainViewModel.getComments()
+        setListeners(view)
     }
 }

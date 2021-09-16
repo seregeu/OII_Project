@@ -83,7 +83,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:ems="15"
-                android:hint="Password"
+                android:hint="Пароль"
                 android:inputType="textPassword" />
 
             <EditText
@@ -105,7 +105,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:ems="15"
-                android:hint="Second E-mail"
+                android:hint="Второй E-mail"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -116,7 +116,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:ems="15"
-                android:hint="Card umber"
+                android:hint="Номер карты"
                 android:inputType="textPersonName" />
 
             <RadioGroup
@@ -133,7 +133,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="men" />
+                    android:text="Мужчина" />
 
                 <RadioButton
                     android:id="@+id/radio_women"
@@ -141,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:width="100dp"
-                    android:text="women" />
+                    android:text="Женщина" />
             </RadioGroup>
 
             <Button

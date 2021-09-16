@@ -21,6 +21,10 @@
     <item name = "cornerSize">20dp</item>
     </style>
 
+    <style name="roundedImageViewComment">
+        <item name = "cornerSize">10dp</item>
+    </style>
+
     <style name="ImageRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/ratingbar_icons</item>
         <item name="android:minHeight">@dimen/rb_movie_list_min_h</item>
