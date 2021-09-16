@@ -26,12 +26,12 @@ class MainViewModel () : ViewModel(){
 
     fun getApps(){
         //Я не совсем знаю, как правильно реализовывать апросы к серверу через RX, поэтому пока так оставлю
-        _appsList.postValue(appsModel.getApps())
+        _appsList.value = appsModel.getApps()
     }
 
     fun getComments(){
         //Я не совсем знаю, как правильно реализовывать апросы к серверу через RX, поэтому пока так оставлю
-        _commentsList.postValue(commentsModel.getComments())
+        _commentsList.value = commentsModel.getComments()
     }
 
 }

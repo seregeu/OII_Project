@@ -9,6 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oii_project.R
 import com.example.oii_project.adapters.AppAdapter
@@ -35,6 +37,7 @@ class ApplicationDetailsFragment : Fragment() {
 
     private fun initObservers(){
         mainViewModel.commentsList.observe(viewLifecycleOwner, Observer(::updateCommentsList))
+        mainViewModel.getComments()
     }
     private fun updateCommentsList(commentsList: List<CommentDto>){
         commentsRecyclerAdapter.submitList(commentsList)
@@ -52,6 +55,13 @@ class ApplicationDetailsFragment : Fragment() {
         commentsRecyclerAdapter = CommentRecyclerAdapter()
         recyclerViewComments = view.findViewById(R.id.rv_comments)
         recyclerViewComments.adapter = commentsRecyclerAdapter
+        LinearLayoutManager(
+            context, // context
+            RecyclerView.VERTICAL, // orientation
+            false // reverse layout
+        ).apply {
+            recyclerViewComments.layoutManager = this
+        }
         initObservers()
     }
 }
