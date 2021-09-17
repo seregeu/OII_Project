@@ -117,7 +117,7 @@
                 android:layout_marginTop="20dp"
                 android:ems="15"
                 android:hint="Номер карты"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
             <RadioGroup
                 android:id="@+id/registration_gender_radiogroup"

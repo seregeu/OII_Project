@@ -9,7 +9,6 @@ import com.example.oii_project.data.presentation.CommentModel
 import com.example.oii_project.model.data.dto.AppDto
 import com.example.summer_school_hw.model.data.features.movies.CommentDataSourceImpl
 import com.example.summer_school_hw.model.data.presentation.AppsModel
-
 class MainViewModel () : ViewModel(){
     //temp data models
     private var appsModel = AppsModel(AppsDataSourceImpl())
