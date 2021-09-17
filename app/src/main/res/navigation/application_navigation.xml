@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.oii_project.fragments.RegistrationFragment"
+        android:name="com.example.oii_project.fragments.SignUpFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action

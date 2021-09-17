@@ -1,4 +1,4 @@
-package com.example.summer_school_hw.model.data.presentation
+package com.example.oii_project.data.presentation
 
 import com.example.oii_project.data.features.apps.AppsDataSourceImpl
 

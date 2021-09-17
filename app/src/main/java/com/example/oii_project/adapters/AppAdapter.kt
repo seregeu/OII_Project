@@ -12,7 +12,7 @@ import coil.load
 import com.example.oii_project.R
 import com.example.oii_project.callbacks.GridAppRecyclerCallback
 import com.example.oii_project.interfaces.AppItemCallback
-import com.example.oii_project.model.data.dto.AppDto
+import com.example.oii_project.data.dto.AppDto
 import com.google.android.material.imageview.ShapeableImageView
 
 class AppAdapter: ListAdapter<AppDto, RecyclerView.ViewHolder>(GridAppRecyclerCallback()) {

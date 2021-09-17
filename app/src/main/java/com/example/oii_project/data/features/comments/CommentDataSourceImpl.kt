@@ -1,4 +1,4 @@
-package com.example.summer_school_hw.model.data.features.movies
+package com.example.oii_project.data.features.comments
 
 import com.example.oii_project.data.dto.CommentDto
 import com.example.oii_project.data.features.comments.CommentDataSource

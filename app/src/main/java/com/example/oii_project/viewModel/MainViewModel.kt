@@ -3,12 +3,13 @@ package com.example.oii_project.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.oii_project.data.dto.AppDto
 import com.example.oii_project.data.dto.CommentDto
 import com.example.oii_project.data.features.apps.AppsDataSourceImpl
+import com.example.oii_project.data.features.comments.CommentDataSourceImpl
+import com.example.oii_project.data.presentation.AppsModel
 import com.example.oii_project.data.presentation.CommentModel
-import com.example.oii_project.model.data.dto.AppDto
-import com.example.summer_school_hw.model.data.features.movies.CommentDataSourceImpl
-import com.example.summer_school_hw.model.data.presentation.AppsModel
+
 class MainViewModel () : ViewModel(){
     //temp data models
     private var appsModel = AppsModel(AppsDataSourceImpl())

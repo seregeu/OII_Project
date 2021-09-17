@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -16,13 +17,13 @@ import com.example.oii_project.R
 import com.example.oii_project.data.features.apps.AppsDataSourceImpl
 import com.example.oii_project.adapters.AppAdapter
 import com.example.oii_project.interfaces.AppItemCallback
-import com.example.oii_project.model.data.dto.AppDto
+import com.example.oii_project.data.dto.AppDto
 import com.example.oii_project.viewModel.MainViewModel
-import com.example.summer_school_hw.model.data.presentation.AppsModel
+import com.example.oii_project.data.presentation.AppsModel
 
 
 class ApplicationsListFragment : Fragment(), AppItemCallback {
-    private val mainViewModel: MainViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var appRecycler: RecyclerView
     private lateinit var  appAdapter: AppAdapter

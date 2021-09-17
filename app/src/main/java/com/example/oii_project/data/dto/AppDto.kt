@@ -1,4 +1,4 @@
-package com.example.oii_project.model.data.dto
+package com.example.oii_project.data.dto
 
 data class AppDto(
     val title: String,

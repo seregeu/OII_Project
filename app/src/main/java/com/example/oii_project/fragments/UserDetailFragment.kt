@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.oii_project.R
 import com.example.oii_project.viewModel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserDetailFragment : Fragment() {
-    private val mainViewModel: MainViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var navController: NavController
 
@@ -36,7 +39,7 @@ class UserDetailFragment : Fragment() {
         setListeners(view)
     }
 
-    fun setListeners(view: View){
+    private fun setListeners(view: View){
         navController = view.findNavController()
 
         val logoutButton: Button = view.findViewById(R.id.logout_button)

@@ -1,7 +1,6 @@
 package com.example.oii_project.data.features.apps
 
-import com.example.oii_project.data.features.apps.AppsDataSource
-import com.example.oii_project.model.data.dto.AppDto
+import com.example.oii_project.data.dto.AppDto
 
 class AppsDataSourceImpl : AppsDataSource {
 	override fun getApps() = listOf(

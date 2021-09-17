@@ -5,27 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
+
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oii_project.R
-import com.example.oii_project.adapters.AppAdapter
 import com.example.oii_project.adapters.CommentRecyclerAdapter
 import com.example.oii_project.data.dto.CommentDto
+import com.example.oii_project.data.features.comments.CommentDataSourceImpl
 import com.example.oii_project.data.presentation.CommentModel
-import com.example.oii_project.interface_items.CustomImageButton
-import com.example.oii_project.model.data.dto.AppDto
 import com.example.oii_project.viewModel.MainViewModel
-import com.example.summer_school_hw.model.data.features.movies.CommentDataSourceImpl
-import kotlinx.coroutines.supervisorScope
+
 
 class ApplicationDetailsFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
@@ -56,9 +51,8 @@ class ApplicationDetailsFragment : Fragment() {
         labelAddReview.setOnClickListener{
             navController.navigate(R.id.action_applicationDetailsFragment_to_addCommentFragment)
         }
-        val customImageButton = CustomImageButton(getActivity(), view)
-    }
 
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

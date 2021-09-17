@@ -1,7 +1,7 @@
 package com.example.oii_project.callbacks
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.oii_project.model.data.dto.AppDto
+import com.example.oii_project.data.dto.AppDto
 
 class GridAppRecyclerCallback : DiffUtil.ItemCallback<AppDto>() {
 
