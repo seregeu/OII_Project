@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.example.oii_project.R
 
-class CustomImageButton(context:FragmentActivity,view: View){
+class CustomImageButton(context:FragmentActivity?,view: View){
     var status: Status = Status.DOWNLOAD
 
     enum class Status(val status: Int) {
@@ -18,6 +18,7 @@ class CustomImageButton(context:FragmentActivity,view: View){
 
     init{
         val multiFunctionalImageButton: ImageView =view.findViewById(R.id.multy_func_imageButton)
+        Toast.makeText(context,"Text!",Toast.LENGTH_SHORT).show();
         multiFunctionalImageButton.setOnClickListener{
             when(status){
                 Status.DOWNLOAD->{
