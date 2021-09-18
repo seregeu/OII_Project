@@ -19,11 +19,8 @@ import com.example.oii_project.App
 import com.example.oii_project.R
 import com.example.oii_project.data.features.apps.AppsDataSourceImpl
 import com.example.oii_project.adapters.AppAdapter
-import com.example.oii_project.data.dto.AppData
+import com.example.oii_project.data.dto.*
 import com.example.oii_project.interfaces.AppItemCallback
-import com.example.oii_project.data.dto.AppDto
-import com.example.oii_project.data.dto.JwtTokenResponse
-import com.example.oii_project.data.dto.LoginUser
 import com.example.oii_project.viewModel.MainViewModel
 import com.example.oii_project.data.presentation.AppsModel
 import com.example.oii_project.utils.Utility
@@ -71,7 +68,7 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
         val sharedPref =  App.appContext.getSharedPreferences("APP_PREFERENCES", Context.MODE_PRIVATE);
         var jwtToken = ""
         with (sharedPref) {
-            jwtToken = getString("TOKEN","")?:""
+            jwtToken = "JWT "+getString("TOKEN","")?:""
         }
         viewModel.getAppsList(jwtToken,
             object : DisposableSingleObserver<AppData>() {
@@ -79,7 +76,8 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
                     Utility.showToast("Error", App.appContext)
                 }
                 override fun onSuccess(appData: AppData) {
-                    Log.d("appDataaaaaaaaaaaaaa",appData.apps.toString())
+                    Log.i("appData",appData.apps.toString())
+                    updateAppsList(appData.apps)
                 }
             }
         )
@@ -89,7 +87,7 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
         mainViewModel.appsList.observe(viewLifecycleOwner, Observer(::updateAppsList))
     }*/
 
-    private fun updateAppsList(appsList: List<AppDto>){
+    private fun updateAppsList(appsList: List<AppItem>){
         appAdapter.submitList(appsList)
     }
 

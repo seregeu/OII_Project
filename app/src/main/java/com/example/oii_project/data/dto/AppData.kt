@@ -1,12 +1,15 @@
 package com.example.oii_project.data.dto
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class AppData (
-    val apps: List<App>
+    val apps: List<AppItem>
 )
-
-data class App (
+@Serializable
+@SerialName("image_url")
+data class AppItem (
     val title: String,
     val rating: Long,
 
