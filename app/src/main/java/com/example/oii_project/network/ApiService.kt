@@ -5,10 +5,7 @@ import android.provider.Settings.Global.getString
 import android.util.Log
 import com.example.oii_project.App
 import com.example.oii_project.R
-import com.example.oii_project.data.dto.JwtTokenResponse
-import com.example.oii_project.data.dto.LoginUserRemote
-import com.example.oii_project.data.dto.SignUpResponse
-import com.example.oii_project.data.dto.SignUpUserDataRemote
+import com.example.oii_project.data.dto.*
 import com.example.oii_project.utils.NetworkConstants.BASE_URL
 import com.example.oii_project.utils.addJsonConverter
 import com.example.oii_project.utils.setClient
@@ -16,6 +13,8 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
@@ -30,6 +29,10 @@ interface ApiService {
     @POST("/api/account/register/")
     fun postSignUpUser(@Body signUpUserDataRemote: SignUpUserDataRemote)
     : Single<SignUpResponse>
+
+    @GET("/api/app/list/")
+    fun getAppsList(@Header("Authorization") jwtToken: String)
+            : Single<AppData>
 
     companion object {
         fun create(): ApiService {

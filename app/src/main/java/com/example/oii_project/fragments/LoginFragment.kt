@@ -86,6 +86,11 @@ class LoginFragment : Fragment() {
                     Utility.showToast("Error", App.appContext)
                 }
                 override fun onSuccess(token: JwtTokenResponse) {
+                    val sharedPref = activity?.getSharedPreferences("APP_PREFERENCES", Context.MODE_PRIVATE);
+                    with (sharedPref!!.edit()) {
+                        putString("TOKEN",token.token)
+                        apply()
+                    }
                     navController.navigate(R.id.action_loginFragment_to_applicationsListFragment)
                 }
             }
