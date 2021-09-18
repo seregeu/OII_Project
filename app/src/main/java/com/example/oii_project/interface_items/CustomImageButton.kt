@@ -18,19 +18,21 @@ class CustomImageButton(context:FragmentActivity?,view: View){
 
     init{
         val multiFunctionalImageButton: ImageView =view.findViewById(R.id.multy_func_imageButton)
-        Toast.makeText(context,"Text!",Toast.LENGTH_SHORT).show();
         multiFunctionalImageButton.setOnClickListener{
             when(status){
                 Status.DOWNLOAD->{
                     multiFunctionalImageButton.setImageResource(R.drawable.ic_start)
+                    Toast.makeText(context,"Загрузилось!",Toast.LENGTH_SHORT).show();
                     status = Status.START
                 }
                 Status.START->{
                     multiFunctionalImageButton.setImageResource(R.drawable.ic_stop)
+                    Toast.makeText(context,"Остановилось!",Toast.LENGTH_SHORT).show();
                     status = Status.STOP
                 }
                 Status.STOP->{
                     multiFunctionalImageButton.setImageResource(R.drawable.ic_start)
+                    Toast.makeText(context,"Запустилось!",Toast.LENGTH_SHORT).show();
                     status = Status.START
 
                 }

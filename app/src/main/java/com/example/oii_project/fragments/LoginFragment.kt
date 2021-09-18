@@ -1,13 +1,15 @@
 package com.example.oii_project.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -19,6 +21,7 @@ import com.example.oii_project.utils.Utility
 import com.example.oii_project.viewModel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.observers.DisposableSingleObserver
+
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -48,11 +51,27 @@ class LoginFragment : Fragment() {
 
         val loginButton: Button = view.findViewById(R.id.login_button)
         loginButton.setOnClickListener{
-            doAuthentication()
+            setSharedpreferences(view)
         }
         val registerLabel:TextView = view.findViewById(R.id.label_register)
         registerLabel.setOnClickListener{
+
             navController.navigate(R.id.action_loginFragment_to_registrationFragment)
+        }
+    }
+
+    private fun setSharedpreferences(view:View){
+        val login_proxy = view?.findViewById<EditText>(R.id.login_proxy_addr)
+        val baseUrl = login_proxy?.text.toString()
+        if (baseUrl == ""){
+            login_proxy.requestFocus()
+        }else{
+            val sharedPref = activity?.getSharedPreferences("APP_PREFERENCES", Context.MODE_PRIVATE);
+            with (sharedPref!!.edit()) {
+                putString("BASE_URL","http://"+baseUrl+":8000/")
+                apply()
+            }
+            doAuthentication()
         }
     }
 

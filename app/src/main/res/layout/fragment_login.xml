@@ -37,11 +37,23 @@
             android:hint="Пароль"
             />
 
+        <EditText
+            android:id="@+id/login_proxy_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_password"
+            android:layout_marginTop="20dp"
+            android:ems="15"
+            android:inputType="textUri"
+            android:layout_centerHorizontal="true"
+            android:hint="Адрес прокси напр. 192.168.1.103"
+            />
+
         <Button
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/login_password"
+            android:layout_below="@+id/login_proxy_addr"
             android:layout_marginTop="20dp"
             android:text="Войти"
             android:textColor="@color/white"
@@ -63,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/is_bot_switch"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:textSize="20sp"
             android:layout_centerHorizontal="true"
             android:text="Зарегистрировать аккаунт"

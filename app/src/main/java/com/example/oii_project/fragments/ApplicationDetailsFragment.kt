@@ -19,6 +19,7 @@ import com.example.oii_project.adapters.CommentRecyclerAdapter
 import com.example.oii_project.data.dto.CommentDto
 import com.example.oii_project.data.features.comments.CommentDataSourceImpl
 import com.example.oii_project.data.presentation.CommentModel
+import com.example.oii_project.interface_items.CustomImageButton
 import com.example.oii_project.viewModel.MainViewModel
 
 
@@ -51,6 +52,8 @@ class ApplicationDetailsFragment : Fragment() {
         labelAddReview.setOnClickListener{
             navController.navigate(R.id.action_applicationDetailsFragment_to_addCommentFragment)
         }
+        val customImageBustton = CustomImageButton(activity,view)
+        
 
     }
 

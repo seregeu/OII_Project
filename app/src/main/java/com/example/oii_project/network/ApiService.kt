@@ -1,5 +1,10 @@
 package com.example.oii_project.network
 
+import android.content.Context
+import android.provider.Settings.Global.getString
+import android.util.Log
+import com.example.oii_project.App
+import com.example.oii_project.R
 import com.example.oii_project.data.dto.JwtTokenResponse
 import com.example.oii_project.data.dto.LoginUserRemote
 import com.example.oii_project.data.dto.SignUpResponse
@@ -28,8 +33,14 @@ interface ApiService {
 
     companion object {
         fun create(): ApiService {
+            val sharedPref =  App.appContext.getSharedPreferences("APP_PREFERENCES", Context.MODE_PRIVATE);
+            var baseUrl = ""
+            with (sharedPref) {
+                baseUrl = getString("BASE_URL","")?:""
+            }
+            Log.i("ip sevice","created>>>>>>>>>>>>>>>>"+baseUrl)
             return Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(baseUrl)
                 .setClient()
                 .addJsonConverter()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
