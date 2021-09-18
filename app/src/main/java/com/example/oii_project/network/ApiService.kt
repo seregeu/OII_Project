@@ -38,7 +38,7 @@ interface ApiService {
             with (sharedPref) {
                 baseUrl = getString("BASE_URL","")?:""
             }
-            Log.i("ip sevice","created>>>>>>>>>>>>>>>>"+baseUrl)
+            Log.i("ip sevice","created "+baseUrl)
             return Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .setClient()
