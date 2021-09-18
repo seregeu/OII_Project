@@ -29,9 +29,10 @@ import com.example.oii_project.data.presentation.AppsModel
 import com.example.oii_project.utils.Utility
 import com.example.oii_project.viewModel.AppsViewModel
 import com.example.oii_project.viewModel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.observers.DisposableSingleObserver
 
-
+@AndroidEntryPoint
 class ApplicationsListFragment : Fragment(), AppItemCallback {
    // private val mainViewModel: MainViewModel by viewModels()
     private val viewModel: AppsViewModel by viewModels()
