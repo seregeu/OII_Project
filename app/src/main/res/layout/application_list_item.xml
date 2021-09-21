@@ -11,7 +11,7 @@
         android:paddingEnd="6dp"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
-        android:id="@+id/list_app_cover"
+        android:id="@+id/app_cover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="150dp"
@@ -21,13 +21,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/list_app_name"
+        android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textSize="14dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_app_cover" />
+        app:layout_constraintTop_toBottomOf="@+id/app_cover" />
 
 
     <RatingBar
@@ -40,5 +40,5 @@
         android:isIndicator="true"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_app_name" />
+        app:layout_constraintTop_toBottomOf="@+id/app_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

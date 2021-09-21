@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -94,8 +95,10 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
     }
 
     //Пиши тут Сергей, что надо делать при нажатии
-    override fun onAppClick(title: String) {
-        Log.d("Item Pressed", title)
-        navController.navigate(R.id.action_applicationsListFragment_to_applicationDetailsFragment)
+    override fun onAppClick(appItem: AppItem) {
+        val bundle = bundleOf("appId" to appItem.appID,
+        "appName" to appItem.title,"imageUrl" to appItem.imageURL)
+        Log.d("Item Pressed", appItem.toString())
+        navController.navigate(R.id.action_applicationsListFragment_to_applicationDetailsFragment,bundle)
     }
 }

@@ -33,7 +33,7 @@ class AppAdapter: ListAdapter<AppItem, RecyclerView.ViewHolder>(GridAppRecyclerC
         if (holder is AppViewHolder)
             holder.bind(getItem(position))
         holder.itemView.setOnClickListener{
-            listener.onAppClick(getItem(position).title)
+            listener.onAppClick(getItem(position))
         }
     }
 
@@ -42,8 +42,8 @@ class AppAdapter: ListAdapter<AppItem, RecyclerView.ViewHolder>(GridAppRecyclerC
     }
 
     class AppViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private var appCover: ShapeableImageView? = itemView.findViewById(R.id.list_app_cover)
-        private var appName: TextView? = itemView.findViewById(R.id.list_app_name)
+        private var appCover: ShapeableImageView? = itemView.findViewById(R.id.app_cover)
+        private var appName: TextView? = itemView.findViewById(R.id.app_name)
         private var appRating: RatingBar?= itemView.findViewById(R.id.list_ratingBar_indicator)
         fun bind(appItem: AppItem){
             appName?.text = appItem.title

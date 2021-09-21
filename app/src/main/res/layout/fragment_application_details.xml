@@ -20,15 +20,15 @@
             style="@style/ImageRatingBar"
             android:layout_width="82dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/list_app_name"
+            android:layout_below="@+id/app_name"
             android:layout_marginStart="22dp"
             android:isIndicator="true"
             android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/list_app_cover"
+            android:layout_toEndOf="@+id/app_cover"
             android:background="?android:attr/windowBackground"
             android:numStars="5"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/list_app_name" />
+            app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
         <TextView
             android:id="@+id/label_downloads"
@@ -54,7 +54,7 @@
             android:layout_below="@+id/list_ratingBar_indicator"
             android:layout_marginStart="22dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/list_app_cover"
+            android:layout_toEndOf="@+id/app_cover"
             android:text="Отзывов: " />
 
         <TextView
@@ -73,39 +73,34 @@
             android:layout_below="@+id/label_reviews"
             android:layout_marginStart="22dp"
             android:layout_marginTop="7dp"
-            android:layout_toEndOf="@+id/list_app_cover"
+            android:layout_toEndOf="@+id/app_cover"
             android:text="Оставить отзыв"
             android:textColor="@color/green" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/list_app_cover"
+            android:id="@+id/app_cover"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:paddingStart="6dp"
-            android:paddingTop="6dp"
-            android:paddingEnd="6dp"
-            android:paddingBottom="6dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/light_grey"
             app:shapeAppearanceOverlay="@style/roundedImageViewApplication" />
 
         <TextView
-            android:id="@+id/list_app_name"
+            android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="15dp"
             android:layout_marginTop="17dp"
-            android:layout_toEndOf="@+id/list_app_cover"
+            android:layout_toEndOf="@+id/app_cover"
             android:text="Application name"
             android:textSize="30sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/list_app_cover" />
+            app:layout_constraintTop_toBottomOf="@+id/app_cover" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_comments"

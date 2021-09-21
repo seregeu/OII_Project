@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
@@ -17,12 +18,11 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.oii_project.App
 import com.example.oii_project.R
 import com.example.oii_project.adapters.CommentRecyclerAdapter
 import com.example.oii_project.data.dto.*
-import com.example.oii_project.data.features.comments.CommentDataSourceImpl
-import com.example.oii_project.data.presentation.CommentModel
 import com.example.oii_project.interface_items.CustomImageButton
 import com.example.oii_project.utils.Utility
 import com.example.oii_project.viewModel.AppsViewModel
@@ -47,10 +47,7 @@ class ApplicationDetailsFragment : Fragment() {
         }
     }
 
-    private fun initObservers(){
-        /*mainViewModel.commentsList.observe(viewLifecycleOwner, Observer(::updateCommentsList))
-        mainViewModel.getComments()*/
-    }
+
     private fun updateCommentsList(commentsList: List<Comment>){
         commentsRecyclerAdapter.submitList(commentsList)
     }
@@ -93,6 +90,8 @@ class ApplicationDetailsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_application_details, container, false)
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         commentsRecyclerAdapter = CommentRecyclerAdapter()
@@ -105,9 +104,19 @@ class ApplicationDetailsFragment : Fragment() {
         ).apply {
             recyclerViewComments.layoutManager = this
         }
-        /*initObservers()
-        mainViewModel.getComments()*/
-        getAppCommentsById(0)
+
         setListeners(view)
+
+        var appId = arguments?.getLong("appId")
+        var imageUrl = arguments?.getString("imageUrl")
+        var appName = arguments?.getString("appName")
+
+
+        appId?.let { getAppCommentsById(it) }
+        var appCover:ImageView = view.findViewById(R.id.app_cover)
+        appCover.load(imageUrl!!)
+        var _appName:TextView = view.findViewById(R.id.app_name)
+        _appName.text = appName
+
     }
 }

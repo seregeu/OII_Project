@@ -1,5 +1,7 @@
 package com.example.oii_project.interfaces
 
+import com.example.oii_project.data.dto.AppItem
+
 interface AppItemCallback {
-    fun onAppClick(title: String)
+    fun onAppClick(appItem: AppItem)
 }
