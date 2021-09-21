@@ -26,5 +26,4 @@ class AppsViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(observer)
     }
-
 }

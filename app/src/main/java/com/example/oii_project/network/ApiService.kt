@@ -12,27 +12,34 @@ import com.example.oii_project.utils.setClient
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Single
 import retrofit2.Retrofit
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     /**
-     * Get random post
+     * Authorization
      */
     @POST("/api/token/auth/")
     fun postAuth(
         @Body loginUserRemote: LoginUserRemote
     ): Single<JwtTokenResponse>
-
+    /**
+     * Registration
+     */
     @POST("/api/account/register/")
     fun postSignUpUser(@Body signUpUserDataRemote: SignUpUserDataRemote)
     : Single<SignUpResponse>
-
+    /**
+     * Get apps list
+     */
     @GET("/api/app/list/")
     fun getAppsList(@Header("Authorization") jwtToken: String)
             : Single<AppData>
+    /**
+     * Get app comments by id
+     */
+    @GET("/api/action/comment/{app_id}")
+    fun getAppCommentsById(@Path("app_id") appId: Long, @Header("Authorization") jwtToken: String)
+            : Single<CommentsData>
 
     companion object {
         fun create(): ApiService {

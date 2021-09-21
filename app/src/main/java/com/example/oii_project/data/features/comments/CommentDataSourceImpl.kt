@@ -5,7 +5,7 @@ import com.example.oii_project.data.features.comments.CommentDataSource
 
 class CommentDataSourceImpl : CommentDataSource {
 	override fun getComments() = listOf(
-		CommentDto("Василий","А как запустить((((","https://sun9-72.userapi.com/s/v1/ig1/hbHheu1fWOhZilz3Iv_FGmHgfc1cWJRvuD1-LP9m33-RRDNi_0fUUGOcE7q3BR65na4eu_GV.jpg?size=200x200&quality=96&crop=0,0,582,582&ava=1"),
+		CommentDto("Василий","Супер","https://sun9-72.userapi.com/s/v1/ig1/hbHheu1fWOhZilz3Iv_FGmHgfc1cWJRvuD1-LP9m33-RRDNi_0fUUGOcE7q3BR65na4eu_GV.jpg?size=200x200&quality=96&crop=0,0,582,582&ava=1"),
 		CommentDto("Артём","Приятная игрушка, хорошие головоломки. Интересная идея прохождения с временным фактором, перекрашиванием пузыриков в цвет исчезающих и физика растяжения пузырей. Очень затягивающая игра!","https://sun9-61.userapi.com/s/v1/if1/NonaICkwbHKQGd-td92BdBcULqkwJvTlHknvin0CeHm0lX63peYSzGfmVuJUgJvFH6WJfsR8.jpg?size=200x200&quality=96&crop=2,2,1495,1495&ava=1"),
 		CommentDto("Артём","Приятная игрушка, хорошие головоломки. Интересная идея прохождения с временным фактором, перекрашиванием пузыриков в цвет исчезающих и физика растяжения пузырей. Очень затягивающая игра!","https://sun9-61.userapi.com/s/v1/if1/NonaICkwbHKQGd-td92BdBcULqkwJvTlHknvin0CeHm0lX63peYSzGfmVuJUgJvFH6WJfsR8.jpg?size=200x200&quality=96&crop=2,2,1495,1495&ava=1"),
 		CommentDto("Артём","Приятная игрушка, хорошие головоломки. Интересная идея прохождения с временным фактором, перекрашиванием пузыриков в цвет исчезающих и физика растяжения пузырей. Очень затягивающая игра!","https://sun9-61.userapi.com/s/v1/if1/NonaICkwbHKQGd-td92BdBcULqkwJvTlHknvin0CeHm0lX63peYSzGfmVuJUgJvFH6WJfsR8.jpg?size=200x200&quality=96&crop=2,2,1495,1495&ava=1"),

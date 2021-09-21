@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.ListAdapter
 import coil.load
 import com.example.oii_project.R
 import com.example.oii_project.callbacks.CommentRecyclerCallback
-import com.example.oii_project.data.dto.CommentDto
+import com.example.oii_project.data.dto.Comment
 
-class CommentRecyclerAdapter: ListAdapter<CommentDto, RecyclerView.ViewHolder>(CommentRecyclerCallback()) {
+class CommentRecyclerAdapter: ListAdapter<Comment, RecyclerView.ViewHolder>(CommentRecyclerCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
@@ -35,10 +35,10 @@ class CommentRecyclerAdapter: ListAdapter<CommentDto, RecyclerView.ViewHolder>(C
         private var commentAvatar: ImageView? = itemView.findViewById(R.id.comment_author_avatar)
         private var commentAuthorName: TextView? = itemView.findViewById(R.id.comment_author_name)
         private var commentText: TextView? = itemView.findViewById(R.id.comment_text)
-        fun bind(commentDto: CommentDto){
-            commentAvatar?.load(commentDto.avatarUrl)
-            commentAuthorName?.text = commentDto.username
-            commentText?.text = commentDto.commentText
+        fun bind(comment: Comment){
+            commentAvatar?.load("https://telemetr.me/photos/9b9c2f98bbcaa5a43b89b317280d6b26.jpg") //временная заглушка, пока хз, нужны ли аватарки
+            commentAuthorName?.text = comment.user.phone // тоже временно, т.к. у юзера нет логина
+            commentText?.text = comment.content
         }
     }
 }

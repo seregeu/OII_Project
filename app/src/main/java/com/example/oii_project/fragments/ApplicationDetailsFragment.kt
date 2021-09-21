@@ -1,6 +1,8 @@
 package com.example.oii_project.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,28 +10,36 @@ import android.view.ViewGroup
 
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oii_project.App
 import com.example.oii_project.R
 import com.example.oii_project.adapters.CommentRecyclerAdapter
-import com.example.oii_project.data.dto.CommentDto
+import com.example.oii_project.data.dto.*
 import com.example.oii_project.data.features.comments.CommentDataSourceImpl
 import com.example.oii_project.data.presentation.CommentModel
 import com.example.oii_project.interface_items.CustomImageButton
+import com.example.oii_project.utils.Utility
+import com.example.oii_project.viewModel.AppsViewModel
+import com.example.oii_project.viewModel.CommentsViewModel
 import com.example.oii_project.viewModel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.observers.DisposableSingleObserver
 
-
+@AndroidEntryPoint
 class ApplicationDetailsFragment : Fragment() {
-    private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var navController: NavController
 
     lateinit var recyclerViewComments: RecyclerView
     private lateinit var commentsRecyclerAdapter: CommentRecyclerAdapter
-    val commentsModel = CommentModel(CommentDataSourceImpl())
+
+    private val viewModel: CommentsViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +48,30 @@ class ApplicationDetailsFragment : Fragment() {
     }
 
     private fun initObservers(){
-        mainViewModel.commentsList.observe(viewLifecycleOwner, Observer(::updateCommentsList))
-        mainViewModel.getComments()
+        /*mainViewModel.commentsList.observe(viewLifecycleOwner, Observer(::updateCommentsList))
+        mainViewModel.getComments()*/
     }
-    private fun updateCommentsList(commentsList: List<CommentDto>){
+    private fun updateCommentsList(commentsList: List<Comment>){
         commentsRecyclerAdapter.submitList(commentsList)
+    }
+
+    private fun getAppCommentsById(appId: Long){
+        val sharedPref =  App.appContext.getSharedPreferences("APP_PREFERENCES", Context.MODE_PRIVATE);
+        var jwtToken = ""
+        with (sharedPref) {
+            jwtToken = "JWT "+getString("TOKEN","")?:""
+        }
+        viewModel.getAppCommentsById(appId,jwtToken,
+            object : DisposableSingleObserver<CommentsData>() {
+                override fun onError(e: Throwable) {
+                    Utility.showToast("Error", App.appContext)
+                }
+                override fun onSuccess(commentsData: CommentsData) {
+                    Log.i("appData",commentsData.comments.toString())
+                    updateCommentsList(commentsData.comments)
+                }
+            }
+        )
     }
 
     private fun setListeners(view:View){
@@ -76,8 +105,9 @@ class ApplicationDetailsFragment : Fragment() {
         ).apply {
             recyclerViewComments.layoutManager = this
         }
-        initObservers()
-        mainViewModel.getComments()
+        /*initObservers()
+        mainViewModel.getComments()*/
+        getAppCommentsById(0)
         setListeners(view)
     }
 }

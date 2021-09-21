@@ -6,26 +6,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oii_project.App
 import com.example.oii_project.R
-import com.example.oii_project.data.features.apps.AppsDataSourceImpl
 import com.example.oii_project.adapters.AppAdapter
 import com.example.oii_project.data.dto.*
 import com.example.oii_project.interfaces.AppItemCallback
-import com.example.oii_project.viewModel.MainViewModel
-import com.example.oii_project.data.presentation.AppsModel
 import com.example.oii_project.utils.Utility
 import com.example.oii_project.viewModel.AppsViewModel
-import com.example.oii_project.viewModel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.observers.DisposableSingleObserver
 
@@ -37,8 +30,6 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
     private lateinit var appRecycler: RecyclerView
     private lateinit var  appAdapter: AppAdapter
     private lateinit var navController: NavController
-    //temp
-    private var appsModel = AppsModel(AppsDataSourceImpl())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,10 +73,6 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
             }
         )
     }
-
-  /*  private fun initObservers(){
-        mainViewModel.appsList.observe(viewLifecycleOwner, Observer(::updateAppsList))
-    }*/
 
     private fun updateAppsList(appsList: List<AppItem>){
         appAdapter.submitList(appsList)
