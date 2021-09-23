@@ -36,7 +36,11 @@ class CommentRecyclerAdapter: ListAdapter<Comment, RecyclerView.ViewHolder>(Comm
         private var commentAuthorName: TextView? = itemView.findViewById(R.id.comment_author_name)
         private var commentText: TextView? = itemView.findViewById(R.id.comment_text)
         fun bind(comment: Comment){
-            commentAvatar?.load(comment.user.imageUrl) //временная заглушка, пока хз, нужны ли аватарки
+            if (comment.user.imageUrl!=""){
+                commentAvatar?.load(comment.user.imageUrl)
+            }else{
+                commentAvatar?.load("https://clck.ru/XjukU") //заглушка
+            }
             commentAuthorName?.text = comment.username // тоже временно, т.к. у юзера нет логина
             commentText?.text = comment.content
         }
