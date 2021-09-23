@@ -11,6 +11,7 @@ data class CommentsData (
 @Serializable
 data class Comment (
     val content: String,
+    val username: String,
     val user: User
 )
 
@@ -20,5 +21,7 @@ data class User (
     val gender: String,
     @SerialName("second_mail")
     val secondMail: String,
-    val cards: String
+    @SerialName("img_url")
+    val imageUrl: String,
+    val cards: String,
 )

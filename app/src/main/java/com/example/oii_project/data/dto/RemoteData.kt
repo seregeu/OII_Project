@@ -16,7 +16,9 @@ data class SignUpUserDataRemote(
     @SerialName("first_name")
     val firstName: String,
     @SerialName("last_name")
-    val lastName: String
+    val lastName: String,
+    @SerialName("img_url")
+    var imageUrl: String
 )
 
 @Serializable

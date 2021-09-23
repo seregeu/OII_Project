@@ -9,5 +9,6 @@ data class SignUpUserData (
     val phone: String,
     val gender: String = "",
     val secondMail: String = "",
-    val cards: String = ""
+    val cards: String = "",
+    val imageUrl: String= ""
     )

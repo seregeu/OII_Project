@@ -51,12 +51,16 @@ class LoginFragment : Fragment() {
 
         val loginButton: Button = view.findViewById(R.id.login_button)
         loginButton.setOnClickListener{
-            setSharedpreferences(view)
+            doAuthentication()
         }
         val registerLabel:TextView = view.findViewById(R.id.label_register)
         registerLabel.setOnClickListener{
 
             navController.navigate(R.id.action_loginFragment_to_registrationFragment)
+        }
+        val setProxyButton:Button = view.findViewById(R.id.login_set_proxy)
+        setProxyButton.setOnClickListener{
+            setSharedpreferences(view)
         }
     }
 
@@ -71,7 +75,6 @@ class LoginFragment : Fragment() {
                 putString("BASE_URL","http://"+baseUrl+":8000/")
                 apply()
             }
-            doAuthentication()
         }
     }
 

@@ -23,6 +23,7 @@ object Converter {
         secondMail = signUpUserData.secondMail,
         cards = signUpUserData.cards,
         firstName = signUpUserData.firstName,
-        lastName = signUpUserData.lastName
+        lastName = signUpUserData.lastName,
+        imageUrl = signUpUserData.imageUrl
     )
 }

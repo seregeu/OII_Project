@@ -74,7 +74,8 @@ class SignUpFragment : Fragment() {
                 gender = gender,
                 cards = view?.findViewById<EditText>(R.id.register_card_number)?.text.toString(),
                 firstName = view?.findViewById<EditText>(R.id.register_name)?.text.toString(),
-                lastName = view?.findViewById<EditText>(R.id.register_second_name)?.text.toString()
+                lastName = view?.findViewById<EditText>(R.id.register_second_name)?.text.toString(),
+                imageUrl = view?.findViewById<EditText>(R.id.register_avatar_url)?.text.toString()
                 ),
             object : DisposableSingleObserver<SignUpResponse>() {
                 override fun onError(e: Throwable) {
