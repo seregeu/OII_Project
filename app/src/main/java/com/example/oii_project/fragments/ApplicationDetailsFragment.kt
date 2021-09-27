@@ -81,7 +81,8 @@ class ApplicationDetailsFragment : Fragment(), CustomImageButton.OnButtonTouchLi
 
         val labelAddReview: TextView = view.findViewById(R.id.label_add_review)
         labelAddReview.setOnClickListener{
-            navController.navigate(R.id.action_applicationDetailsFragment_to_addCommentFragment)
+
+            navController.navigate(R.id.action_applicationDetailsFragment_to_addCommentFragment,arguments)
         }
         val customImageBustton = CustomImageButton(activity,view,this)
         

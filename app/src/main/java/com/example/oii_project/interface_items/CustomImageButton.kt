@@ -55,18 +55,4 @@ class CustomImageButton(context:FragmentActivity?,view: View,listener: OnButtonT
     interface OnButtonTouchListener{
         fun doAction(actionType:Long)
     }
-
-    /*private fun MakeActionById(appId: Long, actionType: Long){
-
-        viewModel.makeAction(ActionData(appId,"testtttt",actionType)
-            ,object : DisposableSingleObserver<Response>() {
-                override fun onError(e: Throwable) {
-                    Utility.showToast("Error", App.appContext)
-                }
-                override fun onSuccess(t: Response) {
-                }
-            }
-        )
-    }*/
-
 }

@@ -7,8 +7,7 @@
     tools:context=".fragments.AddCommentFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:src="@drawable/ic_profile"
-        android:id="@+id/add_comment_avatar"
+        android:id="@+id/add_comment_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -26,13 +25,13 @@
         app:shapeAppearanceOverlay="@style/roundedImageViewAvatar" />
 
     <TextView
-        android:id="@id/add_comment_username"
+        android:id="@id/add_comment_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
         android:layout_marginTop="6dp"
-        android:layout_toEndOf="@+id/add_comment_avatar"
+        android:layout_toEndOf="@+id/add_comment_image"
         android:text="username" />
 
     <Button
@@ -42,7 +41,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="36dp"
         android:layout_marginTop="7dp"
-        android:layout_toEndOf="@+id/add_comment_username"
+        android:layout_toEndOf="@+id/add_comment_app_name"
         android:text="Опубликовать"
         android:textColor="@color/white" />
 
@@ -50,11 +49,11 @@
         android:id="@+id/add_comment_ratingbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/add_comment_avatar"
+        android:layout_below="@+id/add_comment_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
         android:numStars="5"
-        android:stepSize="1"/>
+        android:stepSize="1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
@@ -64,6 +63,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/comment_text_input"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_below="@+id/rv_comments"
