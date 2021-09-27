@@ -41,7 +41,7 @@ class CommentRecyclerAdapter: ListAdapter<Comment, RecyclerView.ViewHolder>(Comm
             }else{
                 commentAvatar?.load("https://clck.ru/XjukU") //заглушка
             }
-            commentAuthorName?.text = comment.username // тоже временно, т.к. у юзера нет логина
+            commentAuthorName?.text = comment.username
             commentText?.text = comment.content
         }
     }

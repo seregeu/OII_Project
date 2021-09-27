@@ -11,6 +11,8 @@ import com.example.oii_project.utils.addJsonConverter
 import com.example.oii_project.utils.setClient
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Single
+import okhttp3.Response
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.http.*
 
@@ -40,6 +42,12 @@ interface ApiService {
     @GET("/api/action/comment/{app_id}")
     fun getAppCommentsById(@Path("app_id") appId: Long, @Header("Authorization") jwtToken: String)
             : Single<CommentsData>
+
+    /**
+     * Send action id
+     */
+    @POST("/api/action/add/")
+    fun makeAction(@Header("Authorization") jwtToken: String,@Body actionData: ActionData):Single<ResponseBody>
 
     companion object {
         fun create(): ApiService {

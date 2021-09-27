@@ -25,20 +25,25 @@ import com.example.oii_project.adapters.CommentRecyclerAdapter
 import com.example.oii_project.data.dto.*
 import com.example.oii_project.interface_items.CustomImageButton
 import com.example.oii_project.utils.Utility
+import com.example.oii_project.viewModel.ActionViewModel
 import com.example.oii_project.viewModel.AppsViewModel
 import com.example.oii_project.viewModel.CommentsViewModel
 import com.example.oii_project.viewModel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.observers.DisposableSingleObserver
+import okhttp3.Response
+import okhttp3.ResponseBody
 
 @AndroidEntryPoint
-class ApplicationDetailsFragment : Fragment() {
+class ApplicationDetailsFragment : Fragment(), CustomImageButton.OnButtonTouchListener {
     private lateinit var navController: NavController
 
     lateinit var recyclerViewComments: RecyclerView
     private lateinit var commentsRecyclerAdapter: CommentRecyclerAdapter
 
     private val viewModel: CommentsViewModel by viewModels()
+    private val actionViewModel: ActionViewModel by viewModels()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,10 +83,12 @@ class ApplicationDetailsFragment : Fragment() {
         labelAddReview.setOnClickListener{
             navController.navigate(R.id.action_applicationDetailsFragment_to_addCommentFragment)
         }
-        val customImageBustton = CustomImageButton(activity,view)
+        val customImageBustton = CustomImageButton(activity,view,this)
         
 
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -117,6 +124,22 @@ class ApplicationDetailsFragment : Fragment() {
         appCover.load(imageUrl!!)
         var _appName:TextView = view.findViewById(R.id.app_name)
         _appName.text = appName
+
+    }
+
+    override fun doAction(actionType: Long) {
+        Log.i("Action!",actionType.toString())
+        //send action data to server
+        var appId = arguments?.getLong("appId")!!
+        actionViewModel.makeAction(ActionData(appId,"lol",actionType)
+            ,object : DisposableSingleObserver<ResponseBody>() {
+                override fun onError(e: Throwable) {
+                    Utility.showToast("Error", App.appContext)
+                }
+                override fun onSuccess(t: ResponseBody) {
+                }
+            }
+        )
 
     }
 }

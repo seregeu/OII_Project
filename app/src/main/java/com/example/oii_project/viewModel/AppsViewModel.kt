@@ -19,7 +19,6 @@ import javax.inject.Inject
 class AppsViewModel @Inject constructor(
     private val repository: AppsRepo
 ): ViewModel() {
-
     fun getAppsList(jwtToken:String, observer: DisposableSingleObserver<AppData>) {
         repository.remoteCall { App.instance.apiService.getAppsList(jwtToken)}
             .subscribeOn(Schedulers.io())
