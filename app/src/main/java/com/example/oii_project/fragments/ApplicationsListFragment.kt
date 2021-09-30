@@ -32,6 +32,10 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
     private lateinit var  appAdapter: AppAdapter
     private lateinit var navController: NavController
 
+    private lateinit var searchView: androidx.appcompat.widget.SearchView
+    var recyleAppsData = emptyList<AppItem>()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -50,10 +54,40 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
         initRecyclerMovies(view)
-       // initObservers()
-        //Тута получаю приложения
-      //  mainViewModel.getApps()
+        searchView = view.findViewById(R.id.search_view)
         getAppsList()
+        performSearch()
+    }
+
+    private fun performSearch() {
+        searchView.setOnQueryTextListener(object :androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText)
+                return true
+            }
+        })
+    }
+
+    private fun search(text: String?) {
+        var matchedApps = mutableListOf<AppItem>()
+        text?.let {
+            recyleAppsData.forEach { movie ->
+                if (movie.title.startsWith(text, true)) {
+                    matchedApps.add(movie)
+                    appAdapter.submitList(matchedApps)
+
+                }
+                if(text.length==0){
+                    appAdapter.submitList(recyleAppsData)
+                }
+            }
+            appAdapter.submitList(matchedApps)
+        }
     }
 
     private fun getAppsList(){
@@ -69,6 +103,7 @@ class ApplicationsListFragment : Fragment(), AppItemCallback {
                 }
                 override fun onSuccess(appData: AppData) {
                     Log.i("appData",appData.apps.toString())
+                    recyleAppsData = appData.apps
                     updateAppsList(appData.apps)
                 }
             }

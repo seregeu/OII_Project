@@ -6,8 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ApplicationsListFragment">
 
-    <SearchView
-        android:id="@+id/searh_view"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
         android:layout_width="354dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
@@ -41,7 +41,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searh_view"
+        android:layout_below="@+id/search_view"
         android:layout_marginTop="24dp"
         android:id="@+id/rv_apps"/>
 </RelativeLayout>

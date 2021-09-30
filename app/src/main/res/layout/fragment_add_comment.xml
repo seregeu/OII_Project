@@ -25,7 +25,7 @@
         app:shapeAppearanceOverlay="@style/roundedImageViewAvatar" />
 
     <TextView
-        android:id="@id/add_comment_app_name"
+        android:id="@+id/add_comment_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -38,10 +38,9 @@
         android:id="@+id/add_comment_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="7dp"
-        android:layout_toEndOf="@+id/add_comment_app_name"
+        android:layout_below="@+id/comment_text_input_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:text="Опубликовать"
         android:textColor="@color/white" />
 
@@ -56,6 +55,7 @@
         android:stepSize="1" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/comment_text_input_layout"
         android:layout_width="300dp"
         android:minHeight="35dp"
         android:layout_height="wrap_content"

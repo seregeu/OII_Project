@@ -155,11 +155,21 @@
                     android:text="Женщина" />
             </RadioGroup>
 
+            <Switch
+                android:id="@+id/is_bot_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/registration_gender_radiogroup"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="Ama bot"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
             <Button
                 android:id="@+id/registration_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/registration_gender_radiogroup"
+                android:layout_below="@+id/is_bot_switch"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="Зарегистрировать"
