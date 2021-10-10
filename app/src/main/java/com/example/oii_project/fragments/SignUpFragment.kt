@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioGroup
+import android.widget.*
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -75,7 +73,8 @@ class SignUpFragment : Fragment() {
                 cards = view?.findViewById<EditText>(R.id.register_card_number)?.text.toString(),
                 firstName = view?.findViewById<EditText>(R.id.register_name)?.text.toString(),
                 lastName = view?.findViewById<EditText>(R.id.register_second_name)?.text.toString(),
-                imageUrl = view?.findViewById<EditText>(R.id.register_avatar_url)?.text.toString()
+                imageUrl = view?.findViewById<EditText>(R.id.register_avatar_url)?.text.toString(),
+                bot = view?.findViewById<Switch>(R.id.is_bot_switch)?.isChecked()!!
                 ),
             object : DisposableSingleObserver<SignUpResponse>() {
                 override fun onError(e: Throwable) {

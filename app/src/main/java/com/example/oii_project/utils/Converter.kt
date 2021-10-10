@@ -24,6 +24,7 @@ object Converter {
         cards = signUpUserData.cards,
         firstName = signUpUserData.firstName,
         lastName = signUpUserData.lastName,
-        imageUrl = signUpUserData.imageUrl
+        imageUrl = signUpUserData.imageUrl,
+        bot = signUpUserData.bot
     )
 }

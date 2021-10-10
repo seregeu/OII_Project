@@ -10,5 +10,6 @@ data class SignUpUserData (
     val gender: String = "",
     val secondMail: String = "",
     val cards: String = "",
-    val imageUrl: String= ""
+    val imageUrl: String= "",
+    val bot: Boolean,
     )
