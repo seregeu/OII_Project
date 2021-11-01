@@ -132,7 +132,7 @@ class ApplicationDetailsFragment : Fragment(), CustomImageButton.OnButtonTouchLi
         Log.i("Action!",actionType.toString())
         //send action data to server
         var appId = arguments?.getLong("appId")!!
-        actionViewModel.makeAction(ActionData(appId,"lol",actionType)
+        actionViewModel.makeAction(ActionData(appId,"-",actionType)
             ,object : DisposableSingleObserver<ResponseBody>() {
                 override fun onError(e: Throwable) {
                     Utility.showToast("Error", App.appContext)

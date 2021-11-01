@@ -39,13 +39,13 @@ class CustomImageButton(context:FragmentActivity?,view: View,listener: OnButtonT
                 Status.START->{
                     multiFunctionalImageButton.setImageResource(R.drawable.ic_stop)
                     Toast.makeText(context,"Остановилось!",Toast.LENGTH_SHORT).show();
-                    listener.doAction(5)
+                    listener.doAction(4)
                     status = Status.STOP
                 }
                 Status.STOP->{
                     multiFunctionalImageButton.setImageResource(R.drawable.ic_start)
                     Toast.makeText(context,"Запустилось!",Toast.LENGTH_SHORT).show();
-                    listener.doAction(4)
+                    listener.doAction(5)
                     status = Status.START
                 }
             }
